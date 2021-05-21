@@ -1,0 +1,9 @@
+.vscode/
+utils/__pycache__/
+__pycache__/
+Debug/
+Downloads/
+Config/
+*.session
+*.session-journal
+*.bat

@@ -1,0 +1,3 @@
+Pyrogram==1.2.6
+PyYAML==5.4
+TgCrypto==1.2.2
