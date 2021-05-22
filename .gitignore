@@ -7,3 +7,4 @@ Config/
 *.session
 *.session-journal
 *.bat
+unknown_errors.txt
