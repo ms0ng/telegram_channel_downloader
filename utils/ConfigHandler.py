@@ -121,8 +121,8 @@ class ConfigHandler:
 
     def __save_config(self):
         try:
-            with open(self.__CONFIG_FILE_NAME, "w") as yaml_file:
-                yaml.dump(self.__CONFIG, yaml_file, default_flow_style=False)
+            #with open(self.__CONFIG_FILE_NAME, "w") as yaml_file:
+            #    yaml.dump(self.__CONFIG, yaml_file, default_flow_style=False)
             with open(self.__MONITORS_SAVENAME, "w") as yaml_file:
                 yaml.dump(self.__MONITORS, yaml_file, default_flow_style=False)
         except:
