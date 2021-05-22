@@ -32,7 +32,7 @@ def instantiate_monitors(
         monitor = Monitor(
             telegram_client=telegram_client,
             config_handler=config_handler,
-            chat_id=each,
+            chat_id=str(each),
         )
         monitors.append(monitor)
     return monitors

@@ -172,8 +172,13 @@ class Monitor:
 
     async def update(self):
         """main call"""
+        
+        if self.__CHAT_ID[0]=="-":
+            chatid:int=int(self.__CHAT_ID)
+        else:
+            chatid:str=self.__CHAT_ID
         msg_iter=self.__TG_CLIENT.iter_history(
-            chat_id=self.__CHAT_ID,
+            chat_id=chatid,
             offset_id=self.__LAST_READ_MESSAGE_ID,
             reverse=True,
         )
