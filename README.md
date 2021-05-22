@@ -49,4 +49,5 @@ Files will be downloaded at `./Downloads/{channel_name}/{media_type}/`
 I can't finish this project without their help, checkout these links and see the inspiration for me.
 
 [Dineshkarthik/telegram_media_downloader](https://github.com/Dineshkarthik/telegram_media_downloader)
+
 [snow922841/telegram_channel_downloader](https://github.com/snow922841/telegram_channel_downloader)
