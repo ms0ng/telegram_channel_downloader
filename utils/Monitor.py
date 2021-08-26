@@ -142,7 +142,7 @@ class Monitor:
             return
 
         #Wait for other downloading
-        while Monitor.downloadingCount>7:
+        while Monitor.downloadingCount>3:
             await asyncio.sleep(3)
         Monitor.downloadingCount+=1
 
