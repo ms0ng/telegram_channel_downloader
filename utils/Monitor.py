@@ -11,6 +11,7 @@ from utils.ConfigHandler import ConfigHandler
 logger: logging.Logger = logging.getLogger("Downloader")
 
 class Monitor:
+    downloadingCount=0
 
     @property
     def default_accept_media(self):
@@ -139,6 +140,12 @@ class Monitor:
                 %(str(self),str(message.message_id),filename)
             )
             return
+
+        #Wait for other downloading
+        while Monitor.downloadingCount<7:
+            asyncio.sleep(3)
+        Monitor.downloadingCount+=1
+
         retry:int =3
         for i in range(retry):
             try:
@@ -152,6 +159,8 @@ class Monitor:
                         %(str(self),str(message.message_id),download_path)
                     )
                     break
+                else:
+                    raise Exception("Download failed")
             except ValueError:
                 logger.debug("This message doesn't contain any media.")
                 break
@@ -166,7 +175,8 @@ class Monitor:
                     self.__IDS_TO_RETRY.append(message.message_id)
                     break
                 await asyncio.sleep(5)
-        
+
+        Monitor.downloadingCount-=1
         if self.__LAST_READ_MESSAGE_ID<message.message_id:
             self.__LAST_READ_MESSAGE_ID=message.message_id
 
@@ -183,16 +193,12 @@ class Monitor:
             reverse=True,
         )
         dl_list:list=[]
-        i:int=0
         async for message in msg_iter: 
             #asyncio.run_coroutine_threadsafe(self.__download_media(message,sema),asyncio.get_running_loop())  #too fast
             dl_list.append(self.__download_media(message))
-            i+=1
-            if i >= 8:
-                i=0
+            if len(dl_list) >= 8:
                 await asyncio.wait(dl_list.copy())
                 dl_list.clear()
-                await asyncio.sleep(3)
                 self.__CONFIGHANDLER.set_monitor(self.__CHAT_ID, self.get_status())
         if dl_list:
             await asyncio.wait(dl_list.copy())
