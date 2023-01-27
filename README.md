@@ -23,12 +23,16 @@ api_id: your_api_id
 chat_ids:
 - channel_name01
 - channel_name02
-#...copy one or more chat_id here
+#...copy one or more chat id here, channel name is also okey
 ```
+
+> [This is a way to find Chat id](https://gist.github.com/mraaroncruz/e76d19f7d61d59419002db54030ebe35). I recommend [@getidsbot](https://t.me/getidsbot) tho.
+
+> `config.yaml` will be **DELETED** when the program spot something error.Be sure backup your file before you start the program!
 
 Run again and login to your telegram, the program will start download all media from the channel.
 
-You can edit `./Config.monitors.yaml` to assign program where to start download:
+You can edit `./Config/monitors.yaml` to define where to start download:
 ``` yaml
 channel_name01:
   ids_to_retry: # failed downloads, will re-download them after all media downloads complete, don't edit
@@ -46,7 +50,7 @@ Files will be downloaded at `./Downloads/{channel_name}/{media_type}/`
 {media_type} can be `Photo`, `Video`, `Animation`, `Document`, `Audio`
 
 ## Special Thanks
-I can't finish this project without their help, checkout these links and see the inspiration for me.
+Checkout these links and see how they inspire me.
 
 [Dineshkarthik/telegram_media_downloader](https://github.com/Dineshkarthik/telegram_media_downloader)
 
